@@ -1,0 +1,25 @@
+.card-mine{
+    width: 30rem;
+    transition: 1s;
+    border-radius: 15px;
+    background-color: #9eb7d4;
+}
+.card-mine:hover{
+    scale: 1.05;
+}
+
+
+.mttt{
+    margin-top: 10rem;
+}
+
+p a{
+    font-size: large;
+    color: white; 
+    transition: 0.3s;
+}
+
+p a:hover{
+    color: black;
+}
+ 

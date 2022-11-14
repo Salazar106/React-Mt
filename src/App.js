@@ -1,6 +1,7 @@
 import React from "react";
 import {NavBar} from './components/NavBar/navbar';
 import {Login, Register} from './components/login/login'
+import {Envios} from './components/Envios/envios'
 
 // import './App.css';
 
@@ -17,7 +18,7 @@ function App() {
 
     <React.Fragment>
       <NavBar/>
-      <Register/>
+      <Envios/>
     </React.Fragment>
 
   );

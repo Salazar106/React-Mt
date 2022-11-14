@@ -42,22 +42,27 @@ function Register() {
 
                         <div class="form-floating">
                             <input type="email" class="form-control " id="floatingInput" placeholder="name@example.com" />
+                            <label for="floatingInput">Name</label>
+                        </div>
+
+                        <div class="form-floating">
+                            <input type="email" class="form-control mt-2" id="floatingInput" placeholder="name@example.com" />
                             <label for="floatingInput">Username</label>
                         </div>
 
                         <div class="form-floating">
-                            <input type="email" class="form-control mt-3" id="floatingInput" placeholder="name@example.com" />
+                            <input type="email" class="form-control mt-2" id="floatingInput" placeholder="name@example.com" />
                             <label for="floatingInput">E-mail</label>
                         </div>
 
                         <div class="form-floating">
-                            <input type="password" class="form-control mt-3" id="floatingPassword" placeholder="Password" />
+                            <input type="password" class="form-control mt-2" id="floatingPassword" placeholder="Password" />
                             <label for="floatingPassword">Password</label>
                         </div>
 
 
-                        <button class="w-100 btn btn-lg btn-primary mt-5" type="submit">Sign up</button>
-                        <p class="mt-5 mb-3 text-muted">© InstaYa-2022</p>
+                        <button class="w-100 btn btn-lg btn-primary mt-4" type="submit">Sign up</button>
+                        <p class="mt-2 mb-3 text-muted">© InstaYa-2022</p>
                     </form>
                 </div>
             </div>

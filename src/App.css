@@ -1,38 +1,80 @@
-.App {
-  text-align: center;
+section{
+  height: 100vh;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.card-mine{
+  width: 30rem;
+  transition: 1s;
+  border-radius: 15px;
+  background-color: #d2d2d3;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+.card-mine:hover{
+  scale: 1.05;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+.mttt{
+  margin-top: 3rem;
 }
 
-.App-link {
-  color: #61dafb;
+p a{
+  font-size: large;
+  color: white; 
+  transition: 0.3s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+p a:hover{
+  color: black;
+}
+
+
+.card-table{
+  margin: 5px;
+  padding: 5rem;
+
+}
+
+.boton1{
+  background-color: #226ac1;
+  border-color: #9eb7d4;
+  transition: 1s;
+}
+
+.boton1:hover{
+  background-color: #143f74;
+  border-color: #9eb7d4;
+  scale: 1.1;
+}
+
+.boton2{
+  border-radius: 50%;
+  background-color: #1fb627;
+  border-color: #f9f9f9;
+  transition: 1s;
+}
+
+.boton2:hover{
+  border-radius: 50%;
+  background-color: #1fb627;
+  border-color: #f9f9f9;
+  scale: 1.1;
+}
+
+.boton3{
+  background-color: #152846;
+  border-color: #f9f9f9;
+  transition: 1s;
+}
+
+.boton3:hover{
+  background-color: #152846;
+  border-color: #f9f9f9;
+  scale: 1.1;
+}
+
+.input-mine1{
+  width: 90px;
 }

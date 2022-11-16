@@ -1,27 +1,29 @@
 import React from "react";
-import './login.css'
+
+
+
+
+
 
 function Login() {
     return (
         <div className="row justify-content-center mttt">
             <div className="col-auto">
-                <div class="card card-mine text-center p-5">
+                <div className="card card-mine text-center p-5">
                     <form>
-                        <i class="bi bi-box2-heart"></i>
-                        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+                        <i className="bi bi-box2-heart"></i>
+                        <h1 className="h3 mb-3 fw-normal">Iniciar Sesion</h1>
 
-                        <div class="form-floating">
-                            <input type="email" class="form-control " id="floatingInput" placeholder="name@example.com" />
+                        <div className="form-floating">
+                            <input type="email" className="form-control " id="floatingInput" placeholder="name@example.com" />
                             <label for="floatingInput">User</label>
                         </div>
-                        <div class="form-floating">
-                            <input type="password" class="form-control mt-3" id="floatingPassword" placeholder="Password" />
+                        <div className="form-floating">
+                            <input type="password" className="form-control mt-3" id="floatingPassword" placeholder="Password" />
                             <label for="floatingPassword">Password</label>
                         </div>
-
-                        <p class="mt-4"><a href="">Registrate Aqui</a></p>
-                        <button class="w-100 btn btn-lg btn-primary mt-2" type="submit">Sign in</button>
-                        <p class="mt-3 mb-1 text-muted">© InstaYa-2022</p>
+                        <button className="w-100 btn btn-lg btn-primary mt-2" type="submit">Sign in</button>
+                        <p className="mt-3 mb-1 text-muted">© InstaYa-2022</p>
                     </form>
                 </div>
             </div>

@@ -3,7 +3,7 @@ const Usuario = require("../model/users");
 
 const register = async (req, res) => {
   const { nombre, username, correo, password } = req.body;
-  Usuario.findOne({ correo }).then((usuario) => {
+  Usuario.findOne({ correo }||{username}).then((usuario) => {
     if (usuario) {
       return res.json({
         mensaje: "Su correo o Username ya existen, intentalo denuevo",

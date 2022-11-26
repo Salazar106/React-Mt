@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get('/user/:id', controllers.getUserById)
+app.get('/user/:userId', controllers.getUserById)
 app.post('/register', controllers.register)
 app.post('/login', controllers.login)
 

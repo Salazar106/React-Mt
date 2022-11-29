@@ -7,9 +7,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get('/user/:userId', controllers.getUserById)
-app.post('/register', controllers.register)
-app.post('/login', controllers.login)
+app.get('/user/:userId', controllers.getUserById);
+app.post('/register', controllers.register);
+app.post('/login', controllers.login);
+app.post('/envios', controllers.envios);
+app.get('/obtenerEnvios', controllers.obtenerEnvios)
+app.get('/obtenerEnvById/:id', controllers.obtenerEnvById)
 
 
 const PORT = 4000;

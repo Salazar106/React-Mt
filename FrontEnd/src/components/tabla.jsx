@@ -73,7 +73,7 @@ export default class tabla extends Component {
           </button>
         </div>
 
-        <table class="table table-dark table-hover">
+        <table className="table table-dark table-hover">
           <thead>
             <tr>
               <th scope="col"># Servico</th>
@@ -112,29 +112,29 @@ export default class tabla extends Component {
         {/* --------------------------------------Modal de Crear------------------------------------ */}
 
         <div
-          class="modal fade" id="crearEnvio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+          className="modal fade" id="crearEnvio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
         >
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">
+          <div className="modal-dialog modal-lg">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h1 className="modal-title fs-5" id="staticBackdropLabel">
                   Crear Orden
                 </h1>
                 <button
                   type="button"
-                  class="btn-close"
+                  className="btn-close"
                   data-bs-dismiss="modal"
                   aria-label="Close"
                 ></button>
               </div>
               <form onSubmit={this.onSubmit}>
-                <div class="modal-body p-3">
+                <div className="modal-body p-3">
                   <div className="row justify-content-center">
                     <div className="col-auto">
-                      <div class="form-floating mb-3">
+                      <div className="form-floating mb-3">
                         <input
                           type="date"
-                          class="form-control"
+                          className="form-control"
                           id="fecha"
                           placeholder="Fecha"
                           name="fecha"
@@ -148,11 +148,11 @@ export default class tabla extends Component {
 
                   <div className="row justify-content-center mt-2">
                     <div className="col-auto">
-                      <div class="form-floating mb-3">
+                      <div className="form-floating mb-3">
                         <input
                           onChange={this.onChangeEnvio}
                           type="number"
-                          class="form-control input-mine1"
+                          className="form-control input-mine1"
                           id="largo"
                           placeholder="Largo"
                           name="largo"
@@ -162,7 +162,7 @@ export default class tabla extends Component {
                       </div>
                     </div>
                     <div className="col-auto">
-                      <div class="form-floating mb-3">
+                      <div className="form-floating mb-3">
                         <input
                           onChange={this.onChangeEnvio}
                           type="number"
@@ -176,11 +176,11 @@ export default class tabla extends Component {
                       </div>
                     </div>
                     <div className="col-auto">
-                      <div class="form-floating mb-3">
+                      <div className="form-floating mb-3">
                         <input
                           onChange={this.onChangeEnvio}
                           type="number"
-                          class="form-control input-mine1"
+                          className="form-control input-mine1"
                           id="alto"
                           placeholder="Alto"
                           name="alto"
@@ -190,11 +190,11 @@ export default class tabla extends Component {
                       </div>
                     </div>
                     <div className="col-auto">
-                      <div class="form-floating mb-3">
+                      <div className="form-floating mb-3">
                         <input
                           onChange={this.onChangeEnvio}
                           type="number"
-                          class="form-control input-mine1"
+                          className="form-control input-mine1"
                           id="peso"
                           placeholder="Peso"
                           name="peso"
@@ -205,11 +205,11 @@ export default class tabla extends Component {
                     </div>
                   </div>
 
-                  <div class="form-floating mb-3">
+                  <div className="form-floating mb-3">
                     <input
                       onChange={this.onChangeEnvio}
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       id="direccionR"
                       placeholder="Direccion Recogida"
                       name="direccionR"
@@ -218,11 +218,11 @@ export default class tabla extends Component {
                     <label for="direccionR">Direccion donde se recoge</label>
                   </div>
 
-                  <div class="form-floating mb-3">
+                  <div className="form-floating mb-3">
                     <input
                       onChange={this.onChangeEnvio}
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       id="ciudadR"
                       placeholder="Direccion Recogida"
                       name="ciudadR"
@@ -231,11 +231,11 @@ export default class tabla extends Component {
                     <label for="ciudadR">Ciudad donde se recoge</label>
                   </div>
 
-                  <div class="form-floating mb-3">
+                  <div className="form-floating mb-3">
                     <input
                       onChange={this.onChangeEnvio}
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       id="nombredestinatario"
                       placeholder="Nombre del Destinatario"
                       name="nombredestinatario"
@@ -246,11 +246,11 @@ export default class tabla extends Component {
                     </label>
                   </div>
 
-                  <div class="form-floating mb-3">
+                  <div className="form-floating mb-3">
                     <input
                       onChange={this.onChangeEnvio}
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       id="cedula"
                       placeholder="Ciudad Recogida"
                       name="cedula"
@@ -259,11 +259,11 @@ export default class tabla extends Component {
                     <label for="cedula">Cedula/Nit del Destinatario</label>
                   </div>
 
-                  <div class="form-floating mb-3">
+                  <div className="form-floating mb-3">
                     <input
                       onChange={this.onChangeEnvio}
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       id="ciudadE"
                       placeholder="Direccion Recogida"
                       name="ciudadE"
@@ -272,11 +272,11 @@ export default class tabla extends Component {
                     <label for="ciudadE">Ciudad de Entrega</label>
                   </div>
 
-                  <div class="form-floating mb-3">
+                  <div className="form-floating mb-3">
                     <input
                       onChange={this.onChangeEnvio}
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       id="direccionE"
                       placeholder="Direccion Recogida"
                       name="direccionE"
@@ -285,7 +285,7 @@ export default class tabla extends Component {
                     <label for="direccionE">Direccion de Entrega</label>
                   </div>
                 </div>
-                <div class="modal-footer" className={styles.buttons3}>
+                <div  className={styles.buttons3}>
                   <button type="button" data-bs-dismiss="modal">
                     Close
                   </button>
@@ -300,29 +300,29 @@ export default class tabla extends Component {
         {/* ----------------------------------Modal de editar----------------------------------------- */}
 
         <div
-          class="modal fade" id="editarEnvio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+          className="modal fade" id="editarEnvio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
         >
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">
+          <div className="modal-dialog modal-lg">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h1 className="modal-title fs-5" id="staticBackdropLabel">
                   Editar Orden
                 </h1>
                 <button
                   type="button"
-                  class="btn-close"
+                  className="btn-close"
                   data-bs-dismiss="modal"
                   aria-label="Close"
                 ></button>
               </div>
               <form>
-                <div class="modal-body p-3">
+                <div className="modal-body p-3">
                   <div className="row justify-content-center">
                     <div className="col-auto">
-                      <div class="form-floating mb-3">
+                      <div className="form-floating mb-3">
                         <input
                           type="date"
-                          class="form-control"
+                          className="form-control"
                           id="fecha"
                           placeholder="Fecha"
                           name="fecha"
@@ -334,10 +334,10 @@ export default class tabla extends Component {
 
                   <div className="row justify-content-center mt-2">
                     <div className="col-auto">
-                      <div class="form-floating mb-3">
+                      <div className="form-floating mb-3">
                         <input
                           type="number"
-                          class="form-control input-mine1"
+                          className="form-control input-mine1"
                           id="largo"
                           placeholder="Largo"
                           name="largo"
@@ -346,10 +346,10 @@ export default class tabla extends Component {
                       </div>
                     </div>
                     <div className="col-auto">
-                      <div class="form-floating mb-3">
+                      <div className="form-floating mb-3">
                         <input
                           type="number"
-                          class="form-control input-mine1"
+                          className="form-control input-mine1"
                           id="ancho"
                           placeholder="Ancho"
                           name="ancho"
@@ -358,10 +358,10 @@ export default class tabla extends Component {
                       </div>
                     </div>
                     <div className="col-auto">
-                      <div class="form-floating mb-3">
+                      <div className="form-floating mb-3">
                         <input
                           type="number"
-                          class="form-control input-mine1"
+                          className="form-control input-mine1"
                           id="alto"
                           placeholder="Alto"
                           name="alto"
@@ -370,10 +370,10 @@ export default class tabla extends Component {
                       </div>
                     </div>
                     <div className="col-auto">
-                      <div class="form-floating mb-3">
+                      <div className="form-floating mb-3">
                         <input
                           type="number"
-                          class="form-control input-mine1"
+                          className="form-control input-mine1"
                           id="peso"
                           placeholder="Peso"
                           name="peso"
@@ -383,10 +383,10 @@ export default class tabla extends Component {
                     </div>
                   </div>
 
-                  <div class="form-floating mb-3">
+                  <div className="form-floating mb-3">
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       id="direccionR"
                       placeholder="Direccion Recogida"
                       name="direccionR"
@@ -394,10 +394,10 @@ export default class tabla extends Component {
                     <label for="direccionR">Direccion donde se recoge</label>
                   </div>
 
-                  <div class="form-floating mb-3">
+                  <div className="form-floating mb-3">
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       id="ciudadR"
                       placeholder="Direccion Recogida"
                       name="ciudadR"
@@ -405,10 +405,10 @@ export default class tabla extends Component {
                     <label for="ciudadR">Ciudad donde se recoge</label>
                   </div>
 
-                  <div class="form-floating mb-3">
+                  <div className="form-floating mb-3">
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       id="nombredestinatario"
                       placeholder="Nombre del Destinatario"
                       name="nombredestinatario"
@@ -418,10 +418,10 @@ export default class tabla extends Component {
                     </label>
                   </div>
 
-                  <div class="form-floating mb-3">
+                  <div className="form-floating mb-3">
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       id="cedula"
                       placeholder="Ciudad Recogida"
                       name="cedula"
@@ -429,10 +429,10 @@ export default class tabla extends Component {
                     <label for="cedula">Cedula/Nit del Destinatario</label>
                   </div>
 
-                  <div class="form-floating mb-3">
+                  <div className="form-floating mb-3">
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       id="ciudadE"
                       placeholder="Direccion Recogida"
                       name="ciudadE"
@@ -440,10 +440,10 @@ export default class tabla extends Component {
                     <label for="ciudadE">Ciudad de Entrega</label>
                   </div>
 
-                  <div class="form-floating mb-3">
+                  <div className="form-floating mb-3">
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       id="direccionE"
                       placeholder="Direccion Recogida"
                       name="direccionE"
@@ -451,7 +451,7 @@ export default class tabla extends Component {
                     <label for="direccionE">Direccion de Entrega</label>
                   </div>
                 </div>
-                <div class="modal-footer" className={styles.buttons3}>
+                <div  className={styles.buttons3}>
                   <button type="button" data-bs-dismiss="modal">
                     Close
                   </button>

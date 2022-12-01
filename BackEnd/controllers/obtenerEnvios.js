@@ -11,12 +11,9 @@ const obtenerEnvios = async (req, res) =>{
 
   const obtenerEnvById =async(req,res)=>{
    
-        const { id } = req.params;
-        Envios.id
-          .findById(id)
-          .then((data) => res.json(data))
-          .catch((error) => res.json({ message: error }));
-      
+        const envios = await Envios.findById(req.params.id);
+        res.send(envios)
+        
   }
 
   module.exports = obtenerEnvios, obtenerEnvById;

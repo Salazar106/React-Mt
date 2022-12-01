@@ -1,28 +1,30 @@
+
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { useNavigate } from "react-router-dom";
+import tabla from "./tabla";
 
 import styles from "./styles.module.scss";
 
 const Welcome = () => {
-  const [name, setName] = useState();
+  // const [name, setName] = useState();
 
   const navigate = useNavigate();
 
-  const token = localStorage.getItem("token");
+  // const token = localStorage.getItem("token");
 
-  useEffect(() => {
-    if (token) {
-      axios
-        .get(`http://localhost:4000/user`, {
-          headers: {
-            token: token,
-          },
-        })
-        .then(({ data }) => setName(data.nombre))
-        .catch((error) => console.error(error));
-    }
-  }, [token]);
+  // useEffect(() => {
+  //   if (token) {
+  //     axios
+  //       .get(`http://localhost:4000/user`, {
+  //         headers: {
+  //           token: token,
+  //         },
+  //       })
+  //       .then(({ data }) => setName(data.nombre))
+  //       .catch((error) => console.error(error));
+  //   }
+  // }, [token]);
 
   ///---------------------------------------////
 
@@ -123,6 +125,7 @@ const Welcome = () => {
       setLoading(false);
     }
   };
+ 
 
   return (
     <div className={styles.welcome}>
@@ -144,23 +147,7 @@ const Welcome = () => {
             </tr>
           </thead>
           <tbody className="table-group-divider">
-            <tr>
-              <th scope="row">1</th>
-              <td>12/01/2022</td>
-              <td>Medellin</td>
-              <td>Calle 34-21sur 22</td>
-              <td>Cumplido</td>
-              <td>
-                <div className={styles.buttons2}>
-                  <button
-                    data-bs-toggle="modal"
-                    data-bs-target="#staticBackdrop"
-                  >
-                    <i className="bi bi-pencil-square"></i>
-                  </button>
-                </div>
-              </td>
-            </tr>
+           
           </tbody>
         </table>
       </div>
@@ -293,7 +280,9 @@ const Welcome = () => {
                     placeholder="Nombre del Destinatario"
                     name="nombredestinatario"
                   />
-                  <label for="nombredestinatario">Nombre del Destinatario</label>
+                  <label for="nombredestinatario">
+                    Nombre del Destinatario
+                  </label>
                 </div>
 
                 <div class="form-floating mb-3">
@@ -336,7 +325,9 @@ const Welcome = () => {
                 <button type="button" data-bs-dismiss="modal">
                   Close
                 </button>
-                <button type="submit" >{loading ? "Procesando..." : "Crear Orden"}</button>
+                <button type="submit">
+                  {loading ? "Procesando..." : "Crear Orden"}
+                </button>
               </div>
             </form>
             {mensaje && <div className={styles.toast}>{mensaje}</div>}

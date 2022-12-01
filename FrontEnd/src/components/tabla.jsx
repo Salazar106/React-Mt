@@ -15,12 +15,15 @@ export default class tabla extends Component {
   //?/--------------------------------\\\\\\
 
   //*-------crear envio----------\\\\
+  onChangeEnvio(){
+    
+  }
 
   render() {
     return (
       <div className={styles.welcome}>
         <div className={styles.buttons3}>
-          <button data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          <button data-bs-toggle="modal" data-bs-target="#crearEnvio">
             Crear orden
           </button>
         </div>
@@ -64,13 +67,7 @@ export default class tabla extends Component {
         {/* --------Modal de Crear--------- */}
 
         <div
-          class="modal fade"
-          id="staticBackdrop"
-          data-bs-backdrop="static"
-          data-bs-keyboard="false"
-          tabindex="-1"
-          aria-labelledby="staticBackdropLabel"
-          aria-hidden="true"
+          class="modal fade" id="crearEnvio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
         >
           <div class="modal-dialog modal-lg">
             <div class="modal-content">

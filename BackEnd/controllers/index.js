@@ -3,7 +3,9 @@ const login = require("./login");
 const getUserById = require("./getuserById");
 const envios = require("./envios");
 const obtenerEnvios = require("./obtenerEnvios");
-const obtenerEnvById=require('./obtenerEnvios')
+const obtenerEnvById=require('./obtenerEnvios');
+const updateEnvio=require('./update');
+const deleteEnvio=require('./deleteEnv')
 
 module.exports = {
   register,
@@ -11,6 +13,8 @@ module.exports = {
   getUserById,
   envios,
   obtenerEnvios,
-  obtenerEnvById
+  obtenerEnvById,
+  updateEnvio,
+  deleteEnvio
   
 };

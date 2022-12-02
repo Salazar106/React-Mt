@@ -12,6 +12,7 @@ const EnviosSchema=new Schema({
     cedula:{type:Number, required:true},
     direccionE:{type:String, required:true},
     ciudadE:{type:String, required:true},
+    estado:{type:String, default:'Por Entregar'}
 });
 
 module.exports=model('envios',EnviosSchema)

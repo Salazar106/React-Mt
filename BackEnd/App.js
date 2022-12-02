@@ -13,6 +13,8 @@ app.post('/login', controllers.login);
 app.post('/envios', controllers.envios);
 app.get('/obtenerEnvios', controllers.obtenerEnvios)
 app.get('/obtenerEnvById/:id', controllers.obtenerEnvById)
+app.put('/updateEnvio/:id', controllers.updateEnvio)
+app.delete('/deleteEnvio/:_id', controllers.deleteEnvio)
 
 
 const PORT = 4000;

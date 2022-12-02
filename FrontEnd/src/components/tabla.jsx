@@ -6,21 +6,21 @@ export default class tabla extends Component {
   //?/-------------------------Listar Objetos-------------------------\\\\\\
   state = {
     envios: [],
-    fecha:'',
-    largo:'',
-    ancho:'',
-    alto:'',
-    peso:'',
-    direccionR:'',
-    ciudadR:'',
-    nombredestinatario:'',
-    cedula:'',
-    direccionE:'',
-    ciudadE:'',
+    fecha: "",
+    largo: "",
+    ancho: "",
+    alto: "",
+    peso: "",
+    direccionR: "",
+    ciudadR: "",
+    nombredestinatario: "",
+    cedula: "",
+    direccionE: "",
+    ciudadE: "",
   };
 
   async componentDidMount() {
-    this.getEnvios()
+    this.getEnvios();
   }
 
   async getEnvios() {
@@ -29,38 +29,34 @@ export default class tabla extends Component {
   }
   //?/-----------------------------------------------------------------\\\\\\
 
-
   //*-----------------------------crear envio----------------------------\\\\
- 
+
   onChangeEnvio = (e) => {
     this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
+      [e.target.name]: e.target.value,
+    });
+  };
 
   onSubmit = async (e) => {
     e.preventDefault();
-    const newEnvio={
-    fecha: this.state.fecha,
-    largo: this.state.alto,
-    ancho: this.state.ancho,
-    alto: this.state.alto,
-    peso: this.state.peso,
-    direccionR: this.state.direccionR,
-    ciudadR: this.state.ciudadR,
-    nombredestinatario: this.state.nombredestinatario,
-    cedula: this.state.cedula,
-    direccionE: this.state.direccionE,
-    ciudadE: this.state.ciudadE
-    }
+    const newEnvio = {
+      fecha: this.state.fecha,
+      largo: this.state.alto,
+      ancho: this.state.ancho,
+      alto: this.state.alto,
+      peso: this.state.peso,
+      direccionR: this.state.direccionR,
+      ciudadR: this.state.ciudadR,
+      nombredestinatario: this.state.nombredestinatario,
+      cedula: this.state.cedula,
+      direccionE: this.state.direccionE,
+      ciudadE: this.state.ciudadE,
+    };
 
-   const res= await axios.post("http://localhost:4000/envios", newEnvio);
-     this.getEnvios()
-    
-
-  }
+    await axios.post("http://localhost:4000/envios", newEnvio);
+    this.getEnvios();
+  };
   //*-----------------------------------------------------------------------\\\\
-
 
   //!------------------------------Editar Envio-----------------------------\\\\
   //!------------------------------------------------------------------------\\\
@@ -112,7 +108,11 @@ export default class tabla extends Component {
         {/* --------------------------------------Modal de Crear------------------------------------ */}
 
         <div
-          className="modal fade" id="crearEnvio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+          className="modal fade"
+          id="crearEnvio"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
         >
           <div className="modal-dialog modal-lg">
             <div className="modal-content">
@@ -285,22 +285,27 @@ export default class tabla extends Component {
                     <label for="direccionE">Direccion de Entrega</label>
                   </div>
                 </div>
-                <div  className={styles.buttons3}>
+                <div className={styles.buttons3}>
                   <button type="button" data-bs-dismiss="modal">
                     Close
                   </button>
-                  <button type="submit" data-bs-dismiss="modal">Crear orden</button>
+                  <button type="submit" data-bs-dismiss="modal">
+                    Crear orden
+                  </button>
                 </div>
               </form>
             </div>
           </div>
         </div>
 
-
         {/* ----------------------------------Modal de editar----------------------------------------- */}
 
         <div
-          className="modal fade" id="editarEnvio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+          className="modal fade"
+          id="editarEnvio"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
         >
           <div className="modal-dialog modal-lg">
             <div className="modal-content">
@@ -451,7 +456,7 @@ export default class tabla extends Component {
                     <label for="direccionE">Direccion de Entrega</label>
                   </div>
                 </div>
-                <div  className={styles.buttons3}>
+                <div className={styles.buttons3}>
                   <button type="button" data-bs-dismiss="modal">
                     Close
                   </button>

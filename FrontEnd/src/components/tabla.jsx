@@ -58,7 +58,11 @@ export default class tabla extends Component {
   };
   //*-----------------------------------------------------------------------\\\\
 
-  //!------------------------------Editar Envio-----------------------------\\\\
+  //!------------------------------eliminar Envio-----------------------------\\\\
+  deleteOrder= async(id)=>{
+    await axios.delete('http://localhost:4000/deleteEnvio/'+id);
+    this.getEnvios();
+  }
   //!------------------------------------------------------------------------\\\
   render() {
     return (
@@ -77,6 +81,7 @@ export default class tabla extends Component {
               <th scope="col">Ciudad Entrega</th>
               <th scope="col">Direccion</th>
               <th scope="col">cedula</th>
+              <th scope="col">Estado</th>
               <th scope="col">Acciones</th>
             </tr>
           </thead>
@@ -89,6 +94,7 @@ export default class tabla extends Component {
                   <td>{env.ciudadE}</td>
                   <td>{env.direccionE}</td>
                   <td>{env.cedula}</td>
+                  <td>{env.estado}</td>
                   <th>
                     <div className={styles.buttons2}>
                       <button
@@ -97,6 +103,11 @@ export default class tabla extends Component {
                       >
                         <i className="bi bi-pencil-square"></i>
                       </button>
+                      <div className={styles.buttonsDanger}>
+                        <button onClick={()=>this.deleteOrder(env._id)}>
+                          <i class="bi bi-trash3"></i>
+                        </button>
+                      </div>
                     </div>
                   </th>
                 </tr>

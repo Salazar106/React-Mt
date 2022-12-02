@@ -199,4 +199,27 @@
       scale: 1.05;
     }
   }
+
+  .buttonsDanger {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+  
+
+    button {
+      background-color: #d34059;
+      border: none;
+      cursor: pointer;
+      color: white;
+      padding: 5px 20px;
+      border-radius: 30px;
+      transition-duration: 0.3s;
+      transition: all 250ms;
+    }
+
+    button:hover {
+      background-color: #9b2d3f;
+      scale: 1.05;
+    } 
+  }
 }

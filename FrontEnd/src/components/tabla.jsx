@@ -421,6 +421,7 @@ export default class tabla extends Component {
                           placeholder="Fecha"
                           name="fecha"
                           onChange={this.onChangeEnvio}
+                          value={this.state.fecha}
 
 
                         />
@@ -616,7 +617,7 @@ export default class tabla extends Component {
                   <button type="button" data-bs-dismiss="modal">
                     Close
                   </button>
-                  <button type="submit">Actualizar</button>
+                  <button type="submit" data-bs-dismiss="modal">Actualizar</button>
                 </div>
               </form>
             </div>
@@ -639,20 +640,20 @@ export default class tabla extends Component {
                     <p><h5>Fecha:</h5> {this.state.fecha}</p>
                   </div>
                   <div className="col-6">
-                    <p><h5>Alto:</h5> {this.state.alto}</p>
+                    <p><h5>Alto:</h5> {this.state.alto}cm</p>
                   </div>
                 </div>
                 <div className="row justify-content-center">
                   <div className="col-6">
-                    <p><h5>Ancho:</h5> {this.state.ancho}</p>
+                    <p><h5>Ancho:</h5> {this.state.ancho}cm</p>
                   </div>
                   <div className="col-6">
-                    <p><h5>Largo:</h5> {this.state.largo}</p>
+                    <p><h5>Largo:</h5> {this.state.largo}cm</p>
                   </div>
                 </div>
                 <div className="row justify-content-center">
                   <div className="col-6">
-                    <p><h5>Peso:</h5> {this.state.peso}</p>
+                    <p><h5>Peso:</h5> {this.state.peso}Kg</p>
                   </div>
                   <div className="col-6">
                     <p><h5>Direccion de Recogida:</h5> {this.state.direccionR}</p>

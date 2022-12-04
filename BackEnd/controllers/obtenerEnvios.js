@@ -6,11 +6,8 @@ const obtenerEnvios = async (req, res) => {
     .catch((error) => res.json({ message: error }));
 };
 
-const obtenerEnvById = async (req, res) => {
-  const envios = await Envios.findById(req.params._id);
-  res.send(envios);
-};
 
 
 
-(module.exports = obtenerEnvios), obtenerEnvById;
+
+module.exports = obtenerEnvios;

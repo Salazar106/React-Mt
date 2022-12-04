@@ -5,6 +5,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Tabla from "./components/tabla"
 
+
 import styles from './App.module.scss'
 
 const App = () => {
@@ -16,6 +17,8 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/welcome" element={<Welcome />} />
           <Route path="/envios" element={<Tabla />} />
+          
+
         </Routes>
       </div>
     </BrowserRouter>

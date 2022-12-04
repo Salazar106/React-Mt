@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import styles from "./styles.module.scss";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams, Link } from "react-router-dom";
 
 export default class tabla extends Component {
   //?/-------------------------Listar Objetos-------------------------\\\\\\
+
+
   state = {
     envios: [],
     fecha: "",
@@ -17,9 +21,13 @@ export default class tabla extends Component {
     cedula: "",
     direccionE: "",
     ciudadE: "",
+    estado: "",
+    _id: "",
+
   };
 
   async componentDidMount() {
+
     this.getEnvios();
   }
 
@@ -36,6 +44,9 @@ export default class tabla extends Component {
       [e.target.name]: e.target.value,
     });
   };
+
+
+
 
   onSubmit = async (e) => {
     e.preventDefault();
@@ -58,9 +69,61 @@ export default class tabla extends Component {
   };
   //*-----------------------------------------------------------------------\\\\
 
+  EditEnv = async (id) => {
+
+    const res = await axios.get('http://localhost:4000/obtenerEnvById/' + id);
+    let row = res.data
+
+    this.setState({
+      _id: row._id,
+      fecha: row.fecha,
+      largo: row.largo,
+      ancho: row.ancho,
+      alto: row.alto,
+      peso: row.peso,
+      direccionR: row.direccionR,
+      ciudadR: row.ciudadR,
+      nombredestinatario: row.nombredestinatario,
+      cedula: row.cedula,
+      direccionE: row.direccionE,
+      estado: row.estado,
+
+    });
+
+    console.log(this.state);
+  }
+
+  onSubmitEdit = async (e) => {
+    e.preventDefault();
+    const editEnvio = {
+      fecha: this.state.fecha,
+      largo: this.state.alto,
+      ancho: this.state.ancho,
+      alto: this.state.alto,
+      peso: this.state.peso,
+      direccionR: this.state.direccionR,
+      ciudadR: this.state.ciudadR,
+      nombredestinatario: this.state.nombredestinatario,
+      cedula: this.state.cedula,
+      direccionE: this.state.direccionE,
+      ciudadE: this.state.ciudadE,
+      estado: this.state.estado,
+    };
+
+    await axios.put("http://localhost:4000/updateEnvio/" + this.state._id, editEnvio);
+    this.getEnvios();
+  }
+
+  // onInputChange = async ({ target: { name, value } }) =>
+  //   setContent({
+  //     ...content,
+  //     [name]: value,
+  //   });
+
+
   //!------------------------------eliminar Envio-----------------------------\\\\
-  deleteOrder= async(id)=>{
-    await axios.delete('http://localhost:4000/deleteEnvio/'+id);
+  deleteOrder = async (id) => {
+    await axios.delete('http://localhost:4000/deleteEnvio/' + id);
     this.getEnvios();
   }
   //!------------------------------------------------------------------------\\\
@@ -97,15 +160,19 @@ export default class tabla extends Component {
                   <td>{env.estado}</td>
                   <th>
                     <div className={styles.buttons2}>
+                      {/* <Link to={"/editarEnvios/" + env._id} type="buttton">
+                        <i className="bi bi-pencil-square"></i>
+                      </Link> */}
                       <button
                         data-bs-toggle="modal"
                         data-bs-target="#editarEnvio"
+                        onClick={() => this.EditEnv(env._id)}
                       >
                         <i className="bi bi-pencil-square"></i>
                       </button>
                       <div className={styles.buttonsDanger}>
-                        <button onClick={()=>this.deleteOrder(env._id)}>
-                          <i class="bi bi-trash3"></i>
+                        <button onClick={() => this.deleteOrder(env._id)}>
+                          <i className="bi bi-trash3"></i>
                         </button>
                       </div>
                     </div>
@@ -121,7 +188,6 @@ export default class tabla extends Component {
         <div
           className="modal fade"
           id="crearEnvio"
-          tabindex="-1"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
         >
@@ -152,13 +218,13 @@ export default class tabla extends Component {
                           onChange={this.onChangeEnvio}
                           required
                         />
-                        <label for="fecha">Fecha</label>
+                        <label>Fecha</label>
                       </div>
                     </div>
                   </div>
 
                   <div className="row justify-content-center mt-2">
-                    <div className="col-auto">
+                    <div className="col-3">
                       <div className="form-floating mb-3">
                         <input
                           onChange={this.onChangeEnvio}
@@ -169,24 +235,24 @@ export default class tabla extends Component {
                           name="largo"
                           required
                         />
-                        <label for="largo">Largo</label>
+                        <label >Largo</label>
                       </div>
                     </div>
-                    <div className="col-auto">
+                    <div className="col-3">
                       <div className="form-floating mb-3">
                         <input
                           onChange={this.onChangeEnvio}
                           type="number"
-                          class="form-control input-mine1"
+                          className="form-control input-mine1"
                           id="ancho"
                           placeholder="Ancho"
                           name="ancho"
                           required
                         />
-                        <label for="ancho">Ancho</label>
+                        <label >Ancho</label>
                       </div>
                     </div>
-                    <div className="col-auto">
+                    <div className="col-3">
                       <div className="form-floating mb-3">
                         <input
                           onChange={this.onChangeEnvio}
@@ -197,10 +263,10 @@ export default class tabla extends Component {
                           name="alto"
                           required
                         />
-                        <label for="alto">Alto</label>
+                        <label>Alto</label>
                       </div>
                     </div>
-                    <div className="col-auto">
+                    <div className="col-3">
                       <div className="form-floating mb-3">
                         <input
                           onChange={this.onChangeEnvio}
@@ -211,7 +277,7 @@ export default class tabla extends Component {
                           name="peso"
                           required
                         />
-                        <label for="peso">Peso</label>
+                        <label >Peso</label>
                       </div>
                     </div>
                   </div>
@@ -226,7 +292,7 @@ export default class tabla extends Component {
                       name="direccionR"
                       required
                     />
-                    <label for="direccionR">Direccion donde se recoge</label>
+                    <label>Direccion donde se recoge</label>
                   </div>
 
                   <div className="form-floating mb-3">
@@ -239,7 +305,7 @@ export default class tabla extends Component {
                       name="ciudadR"
                       required
                     />
-                    <label for="ciudadR">Ciudad donde se recoge</label>
+                    <label >Ciudad donde se recoge</label>
                   </div>
 
                   <div className="form-floating mb-3">
@@ -252,7 +318,7 @@ export default class tabla extends Component {
                       name="nombredestinatario"
                       required
                     />
-                    <label for="nombredestinatario">
+                    <label >
                       Nombre del Destinatario
                     </label>
                   </div>
@@ -267,7 +333,7 @@ export default class tabla extends Component {
                       name="cedula"
                       required
                     />
-                    <label for="cedula">Cedula/Nit del Destinatario</label>
+                    <label >Cedula/Nit del Destinatario</label>
                   </div>
 
                   <div className="form-floating mb-3">
@@ -280,7 +346,7 @@ export default class tabla extends Component {
                       name="ciudadE"
                       required
                     />
-                    <label for="ciudadE">Ciudad de Entrega</label>
+                    <label >Ciudad de Entrega</label>
                   </div>
 
                   <div className="form-floating mb-3">
@@ -293,7 +359,7 @@ export default class tabla extends Component {
                       name="direccionE"
                       required
                     />
-                    <label for="direccionE">Direccion de Entrega</label>
+                    <label >Direccion de Entrega</label>
                   </div>
                 </div>
                 <div className={styles.buttons3}>
@@ -314,7 +380,7 @@ export default class tabla extends Component {
         <div
           className="modal fade"
           id="editarEnvio"
-          tabindex="-1"
+
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
         >
@@ -331,7 +397,7 @@ export default class tabla extends Component {
                   aria-label="Close"
                 ></button>
               </div>
-              <form>
+              <form onSubmit={this.onSubmitEdit}>
                 <div className="modal-body p-3">
                   <div className="row justify-content-center">
                     <div className="col-auto">
@@ -342,129 +408,164 @@ export default class tabla extends Component {
                           id="fecha"
                           placeholder="Fecha"
                           name="fecha"
+                          onChange={this.onChangeEnvio}
+
                         />
-                        <label for="fecha">Fecha</label>
+                        <label>Fecha</label>
+                      </div>
+                    </div>
+                    <div className="col-auto">
+                      <div className="form-floating mb-3">
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="estado"
+                          placeholder="estado"
+                          name="estado"
+                          onChange={this.onChangeEnvio}
+
+                        />
+                        <label>Estado</label>
                       </div>
                     </div>
                   </div>
 
                   <div className="row justify-content-center mt-2">
-                    <div className="col-auto">
+                    <div className="col-3">
                       <div className="form-floating mb-3">
                         <input
                           type="number"
                           className="form-control input-mine1"
                           id="largo"
                           placeholder="Largo"
-                          name="largo"
+                          name="largo" onChange={this.onChangeEnvio}
                         />
-                        <label for="largo">Largo</label>
+                        <label>Largo</label>
                       </div>
                     </div>
-                    <div className="col-auto">
+                    <div className="col-3">
                       <div className="form-floating mb-3">
                         <input
                           type="number"
                           className="form-control input-mine1"
                           id="ancho"
                           placeholder="Ancho"
-                          name="ancho"
+                          name="ancho" onChange={this.onChangeEnvio}
                         />
-                        <label for="ancho">Ancho</label>
+                        <label >Ancho</label>
                       </div>
                     </div>
-                    <div className="col-auto">
+                    <div className="col-3">
                       <div className="form-floating mb-3">
                         <input
                           type="number"
                           className="form-control input-mine1"
                           id="alto"
-                          placeholder="Alto"
-                          name="alto"
+                          placeholder="3"
+                          name="alto" onChange={this.onChangeEnvio}
                         />
-                        <label for="alto">Alto</label>
+                        <label >Alto</label>
                       </div>
                     </div>
-                    <div className="col-auto">
+                    <div className="col-3">
                       <div className="form-floating mb-3">
                         <input
                           type="number"
                           className="form-control input-mine1"
                           id="peso"
                           placeholder="Peso"
-                          name="peso"
+                          name="peso" onChange={this.onChangeEnvio}
                         />
-                        <label for="peso">Peso</label>
+                        <label>Peso</label>
                       </div>
                     </div>
                   </div>
 
-                  <div className="form-floating mb-3">
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="direccionR"
-                      placeholder="Direccion Recogida"
-                      name="direccionR"
-                    />
-                    <label for="direccionR">Direccion donde se recoge</label>
-                  </div>
+                  <div className="row justify-content-center">
+                    <div className="col-6">
+                      <div className="form-floating mb-3">
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="direccionR"
+                          placeholder="Direccion Recogida"
+                          name="direccionR" onChange={this.onChangeEnvio}
 
-                  <div className="form-floating mb-3">
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="ciudadR"
-                      placeholder="Direccion Recogida"
-                      name="ciudadR"
-                    />
-                    <label for="ciudadR">Ciudad donde se recoge</label>
-                  </div>
+                        />
+                        <label >Direccion donde se recoge</label>
+                      </div>
+                    </div>
+                    <div className="col-6">
+                      <div className="form-floating mb-3">
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="ciudadR"
+                          placeholder="Direccion Recogida"
+                          name="ciudadR" onChange={this.onChangeEnvio}
 
-                  <div className="form-floating mb-3">
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="nombredestinatario"
-                      placeholder="Nombre del Destinatario"
-                      name="nombredestinatario"
-                    />
-                    <label for="nombredestinatario">
-                      Nombre del Destinatario
-                    </label>
+                        />
+                        <label >Ciudad donde se recoge</label>
+                      </div>
+                    </div>
                   </div>
+                  <div className="row justify-content-center">
+                    <div className="col-6">
+                      <div className="form-floating mb-3">
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="nombredestinatario"
+                          placeholder="Nombre del Destinatario"
+                          name="nombredestinatario" onChange={this.onChangeEnvio}
 
-                  <div className="form-floating mb-3">
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="cedula"
-                      placeholder="Ciudad Recogida"
-                      name="cedula"
-                    />
-                    <label for="cedula">Cedula/Nit del Destinatario</label>
+                        />
+                        <label >
+                          Nombre del Destinatario
+                        </label>
+                      </div>
+                    </div>
+                    <div className="col-6">
+                      <div className="form-floating mb-3">
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="cedula"
+                          placeholder="Ciudad Recogida"
+                          name="cedula" onChange={this.onChangeEnvio}
+
+                        />
+                        <label>Cedula/Nit del Destinatario</label>
+                      </div>
+                    </div>
                   </div>
+                  <div className="row justify-content-center">
+                    <div className="col-6">
+                      <div className="form-floating mb-3">
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="ciudadE"
+                          placeholder="Direccion Recogida"
+                          name="ciudadE" onChange={this.onChangeEnvio}
 
-                  <div className="form-floating mb-3">
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="ciudadE"
-                      placeholder="Direccion Recogida"
-                      name="ciudadE"
-                    />
-                    <label for="ciudadE">Ciudad de Entrega</label>
-                  </div>
+                        />
+                        <label >Ciudad de Entrega</label>
+                      </div>
+                    </div>
+                    <div className="col-6">
+                      <div className="form-floating mb-3">
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="direccionE"
+                          placeholder="Direccion Recogida"
+                          name="direccionE" onChange={this.onChangeEnvio}
 
-                  <div className="form-floating mb-3">
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="direccionE"
-                      placeholder="Direccion Recogida"
-                      name="direccionE"
-                    />
-                    <label for="direccionE">Direccion de Entrega</label>
+                        />
+                        <label >Direccion de Entrega</label>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div className={styles.buttons3}>

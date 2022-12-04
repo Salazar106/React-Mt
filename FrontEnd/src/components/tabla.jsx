@@ -114,11 +114,7 @@ export default class tabla extends Component {
     this.getEnvios();
   }
 
-  // onInputChange = async ({ target: { name, value } }) =>
-  //   setContent({
-  //     ...content,
-  //     [name]: value,
-  //   });
+
 
 
   //!------------------------------eliminar Envio-----------------------------\\\\
@@ -131,7 +127,7 @@ export default class tabla extends Component {
     return (
       <div className={styles.welcome}>
         <div className={styles.buttons3}>
-          <button data-bs-toggle="modal" data-bs-target="#crearEnvio">
+          <button onClick={this.RenewImpust} data-bs-toggle="modal" data-bs-target="#crearEnvio">
             Crear orden
           </button>
         </div>
@@ -140,10 +136,8 @@ export default class tabla extends Component {
           <thead>
             <tr>
               <th scope="col"># Servico</th>
-              <th scope="col">Fecha Entrega</th>
               <th scope="col">Ciudad Entrega</th>
               <th scope="col">Direccion</th>
-              <th scope="col">cedula</th>
               <th scope="col">Estado</th>
               <th scope="col">Acciones</th>
             </tr>
@@ -153,16 +147,11 @@ export default class tabla extends Component {
               return (
                 <tr key={env._id}>
                   <td>{env._id}</td>
-                  <td>{env.fecha}</td>
                   <td>{env.ciudadE}</td>
                   <td>{env.direccionE}</td>
-                  <td>{env.cedula}</td>
                   <td>{env.estado}</td>
                   <th>
                     <div className={styles.buttons2}>
-                      {/* <Link to={"/editarEnvios/" + env._id} type="buttton">
-                        <i className="bi bi-pencil-square"></i>
-                      </Link> */}
                       <button
                         data-bs-toggle="modal"
                         data-bs-target="#editarEnvio"
@@ -170,6 +159,16 @@ export default class tabla extends Component {
                       >
                         <i className="bi bi-pencil-square"></i>
                       </button>
+
+                      <div className={styles.buttonsWarning}>
+                        <button
+                          data-bs-toggle="modal"
+                          data-bs-target="#VerOrden"
+                          onClick={() => this.EditEnv(env._id)}
+                        >
+                          <i className="bi bi-eye"></i>
+                        </button>
+                      </div>
                       <div className={styles.buttonsDanger}>
                         <button onClick={() => this.deleteOrder(env._id)}>
                           <i className="bi bi-trash3"></i>
@@ -222,7 +221,7 @@ export default class tabla extends Component {
                       </div>
                     </div>
                   </div>
-
+            
                   <div className="row justify-content-center mt-2">
                     <div className="col-3">
                       <div className="form-floating mb-3">
@@ -282,7 +281,9 @@ export default class tabla extends Component {
                     </div>
                   </div>
 
-                  <div className="form-floating mb-3">
+                  <div className="row justify-content-center">
+                    <div className="col-6">
+                    <div className="form-floating mb-3">
                     <input
                       onChange={this.onChangeEnvio}
                       type="text"
@@ -294,7 +295,9 @@ export default class tabla extends Component {
                     />
                     <label>Direccion donde se recoge</label>
                   </div>
-
+                    </div>
+                    <div className="col-6">
+                      
                   <div className="form-floating mb-3">
                     <input
                       onChange={this.onChangeEnvio}
@@ -307,8 +310,11 @@ export default class tabla extends Component {
                     />
                     <label >Ciudad donde se recoge</label>
                   </div>
-
-                  <div className="form-floating mb-3">
+                    </div>
+                  </div>
+                  <div className="row justify-content-center">
+                    <div className="col-6">
+                    <div className="form-floating mb-3">
                     <input
                       onChange={this.onChangeEnvio}
                       type="text"
@@ -322,8 +328,9 @@ export default class tabla extends Component {
                       Nombre del Destinatario
                     </label>
                   </div>
-
-                  <div className="form-floating mb-3">
+                    </div>
+                    <div className="col-6">
+                    <div className="form-floating mb-3">
                     <input
                       onChange={this.onChangeEnvio}
                       type="text"
@@ -335,8 +342,11 @@ export default class tabla extends Component {
                     />
                     <label >Cedula/Nit del Destinatario</label>
                   </div>
-
-                  <div className="form-floating mb-3">
+                    </div>
+                  </div>
+                  <div className="row justify-content-center">
+                    <div className="col-6">
+                    <div className="form-floating mb-3">
                     <input
                       onChange={this.onChangeEnvio}
                       type="text"
@@ -348,8 +358,9 @@ export default class tabla extends Component {
                     />
                     <label >Ciudad de Entrega</label>
                   </div>
-
-                  <div className="form-floating mb-3">
+                    </div>
+                    <div className="col-6">
+                    <div className="form-floating mb-3">
                     <input
                       onChange={this.onChangeEnvio}
                       type="text"
@@ -361,6 +372,8 @@ export default class tabla extends Component {
                     />
                     <label >Direccion de Entrega</label>
                   </div>
+                    </div>
+                  </div>                   
                 </div>
                 <div className={styles.buttons3}>
                   <button type="button" data-bs-dismiss="modal">
@@ -410,6 +423,7 @@ export default class tabla extends Component {
                           name="fecha"
                           onChange={this.onChangeEnvio}
 
+
                         />
                         <label>Fecha</label>
                       </div>
@@ -423,6 +437,7 @@ export default class tabla extends Component {
                           placeholder="estado"
                           name="estado"
                           onChange={this.onChangeEnvio}
+                          value={this.state.estado}
 
                         />
                         <label>Estado</label>
@@ -438,7 +453,10 @@ export default class tabla extends Component {
                           className="form-control input-mine1"
                           id="largo"
                           placeholder="Largo"
-                          name="largo" onChange={this.onChangeEnvio}
+                          name="largo"
+                          onChange={this.onChangeEnvio}
+                          value={this.state.largo}
+
                         />
                         <label>Largo</label>
                       </div>
@@ -450,7 +468,10 @@ export default class tabla extends Component {
                           className="form-control input-mine1"
                           id="ancho"
                           placeholder="Ancho"
-                          name="ancho" onChange={this.onChangeEnvio}
+                          name="ancho"
+                          onChange={this.onChangeEnvio}
+                          value={this.state.ancho}
+
                         />
                         <label >Ancho</label>
                       </div>
@@ -462,7 +483,10 @@ export default class tabla extends Component {
                           className="form-control input-mine1"
                           id="alto"
                           placeholder="3"
-                          name="alto" onChange={this.onChangeEnvio}
+                          name="alto"
+                          onChange={this.onChangeEnvio}
+                          value={this.state.alto}
+
                         />
                         <label >Alto</label>
                       </div>
@@ -474,7 +498,10 @@ export default class tabla extends Component {
                           className="form-control input-mine1"
                           id="peso"
                           placeholder="Peso"
-                          name="peso" onChange={this.onChangeEnvio}
+                          name="peso"
+                          onChange={this.onChangeEnvio}
+                          value={this.state.peso}
+
                         />
                         <label>Peso</label>
                       </div>
@@ -489,7 +516,10 @@ export default class tabla extends Component {
                           className="form-control"
                           id="direccionR"
                           placeholder="Direccion Recogida"
-                          name="direccionR" onChange={this.onChangeEnvio}
+                          name="direccionR"
+                          onChange={this.onChangeEnvio}
+                          value={this.state.direccionR}
+
 
                         />
                         <label >Direccion donde se recoge</label>
@@ -502,7 +532,10 @@ export default class tabla extends Component {
                           className="form-control"
                           id="ciudadR"
                           placeholder="Direccion Recogida"
-                          name="ciudadR" onChange={this.onChangeEnvio}
+                          name="ciudadR"
+                          onChange={this.onChangeEnvio}
+                          value={this.state.ciudadR}
+
 
                         />
                         <label >Ciudad donde se recoge</label>
@@ -517,7 +550,10 @@ export default class tabla extends Component {
                           className="form-control"
                           id="nombredestinatario"
                           placeholder="Nombre del Destinatario"
-                          name="nombredestinatario" onChange={this.onChangeEnvio}
+                          name="nombredestinatario"
+                          onChange={this.onChangeEnvio}
+                          value={this.state.nombredestinatario}
+
 
                         />
                         <label >
@@ -532,7 +568,10 @@ export default class tabla extends Component {
                           className="form-control"
                           id="cedula"
                           placeholder="Ciudad Recogida"
-                          name="cedula" onChange={this.onChangeEnvio}
+                          name="cedula"
+                          onChange={this.onChangeEnvio}
+                          value={this.state.cedula}
+
 
                         />
                         <label>Cedula/Nit del Destinatario</label>
@@ -547,7 +586,10 @@ export default class tabla extends Component {
                           className="form-control"
                           id="ciudadE"
                           placeholder="Direccion Recogida"
-                          name="ciudadE" onChange={this.onChangeEnvio}
+                          name="ciudadE"
+                          onChange={this.onChangeEnvio}
+                          value={this.state.ciudadE}
+
 
                         />
                         <label >Ciudad de Entrega</label>
@@ -560,7 +602,10 @@ export default class tabla extends Component {
                           className="form-control"
                           id="direccionE"
                           placeholder="Direccion Recogida"
-                          name="direccionE" onChange={this.onChangeEnvio}
+                          name="direccionE"
+                          onChange={this.onChangeEnvio}
+                          value={this.state.direccionE}
+
 
                         />
                         <label >Direccion de Entrega</label>
@@ -572,12 +617,77 @@ export default class tabla extends Component {
                   <button type="button" data-bs-dismiss="modal">
                     Close
                   </button>
-                  <button type="submit">Crear orden</button>
+                  <button type="submit">Actualizar</button>
                 </div>
               </form>
             </div>
           </div>
         </div>
+
+        {/* ----------------------------------ver orden----------------------------------------- */}
+
+        <div className="modal fade" id="VerOrden" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h1 className="modal-title fs-5" id="exampleModalLabel">Orden </h1>
+                <h1 className="modal-title fs-5" id="exampleModalLabel">: {this.state._id}</h1>
+                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div className="modal-body">
+                <div className="row justify-content-center">
+                  <div className="col-6">
+                    <p><h5>Fecha:</h5> {this.state.fecha}</p>
+                  </div>
+                  <div className="col-6">
+                    <p><h5>Alto:</h5> {this.state.alto}</p>
+                  </div>
+                </div>
+                <div className="row justify-content-center">
+                  <div className="col-6">
+                    <p><h5>Ancho:</h5> {this.state.ancho}</p>
+                  </div>
+                  <div className="col-6">
+                    <p><h5>Largo:</h5> {this.state.largo}</p>
+                  </div>
+                </div>
+                <div className="row justify-content-center">
+                  <div className="col-6">
+                    <p><h5>Peso:</h5> {this.state.peso}</p>
+                  </div>
+                  <div className="col-6">
+                    <p><h5>Direccion de Recogida:</h5> {this.state.direccionR}</p>
+                  </div>
+                </div>
+                <div className="row justify-content-center">
+                  <div className="col-6">
+                    <p><h5>Ciudad de Recogida:</h5> {this.state.ciudadR}</p>
+                  </div>
+                  <div className="col-6">
+                    <p><h5>Nombre del destinatario:</h5> {this.state.nombredestinatario}</p>
+                  </div>
+                </div>
+                <div className="row justify-content-center">
+                  <div className="col-6">
+                    <p><h5>Cedula:</h5> {this.state.cedula}</p>
+                  </div>
+                  <div className="col-6">
+                    <p><h5>Ciudad de entrega:</h5> {this.state.ciudadE}</p>
+                  </div>
+                </div>
+                <p><h5>Direccion de entrega:</h5> {this.state.direccionE}</p>
+              </div>
+              <div className="modal-footer">
+              <div className={styles.buttons3}>
+                  <button type="button" data-bs-dismiss="modal">
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     );
   }

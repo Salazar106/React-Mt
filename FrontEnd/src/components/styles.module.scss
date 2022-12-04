@@ -222,4 +222,26 @@
       scale: 1.05;
     } 
   }
+  .buttonsWarning {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+  
+
+    button {
+      background-color: #43c148;
+      border: none;
+      cursor: pointer;
+      color: white;
+      padding: 5px 20px;
+      border-radius: 30px;
+      transition-duration: 0.3s;
+      transition: all 250ms;
+    }
+
+    button:hover {
+      background-color: #27732a;
+      scale: 1.05;
+    } 
+  }
 }

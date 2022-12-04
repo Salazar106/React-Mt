@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import styles from "./styles.module.scss";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useNavigate, useParams, Link } from "react-router-dom";
+
 
 export default class tabla extends Component {
   //?/-------------------------Listar Objetos-------------------------\\\\\\
@@ -127,7 +126,7 @@ export default class tabla extends Component {
     return (
       <div className={styles.welcome}>
         <div className={styles.buttons3}>
-          <button onClick={this.RenewImpust} data-bs-toggle="modal" data-bs-target="#crearEnvio">
+          <button  data-bs-toggle="modal" data-bs-target="#crearEnvio">
             Crear orden
           </button>
         </div>
